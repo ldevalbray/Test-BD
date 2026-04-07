@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "skillName": "attestation-hebergement",
+    "skillVersion": "1.0",
+    "status": "success",
+    "timestamp": "2026-04-07T10:00:00Z",
+    "warnings": []
+  },
+  "data": {
+    "hebergeant": {
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "dateNaissance": "15 mars 1985",
+      "lieuNaissance": "Paris (75)",
+      "adresse": "12 rue de la Paix, 75002 Paris"
+    },
+    "logement": {
+      "typeLogement": "appartement",
+      "adresse": "12 rue de la Paix, 75002 Paris"
+    },
+    "heberges": [
+      {
+        "nom": "Dupont",
+        "prenom": "Marie",
+        "dateNaissance": "3 juin 1992",
+        "lieuNaissance": "Lyon (69)",
+        "lienAvecHebergeant": "soeur"
+      }
+    ],
+    "attestation": {
+      "dateAttestation": "7 avril 2026",
+      "lieuAttestation": "Paris"
+    },
+    "conditions": {
+      "lienParente": true
+    }
+  },
+  "deliverable": {
+    "type": "json",
+    "target": "processor",
+    "templateRef": "drive://templates/attestation-hebergement-template.docx"
+  }
+}

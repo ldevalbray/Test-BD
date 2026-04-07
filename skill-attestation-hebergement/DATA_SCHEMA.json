@@ -1,0 +1,104 @@
+{
+  "schema": "attestation-hebergement",
+  "version": "1.0",
+  "sections": {
+    "hebergeant": {
+      "_collectOrder": 1,
+      "_collectHint": "Personne qui heberge. Collecter nom, prenom, date et lieu de naissance, puis adresse complete.",
+      "nom": {
+        "type": "string",
+        "required": true,
+        "description": "Nom de famille de l'hebergeant"
+      },
+      "prenom": {
+        "type": "string",
+        "required": true,
+        "description": "Prenom de l'hebergeant"
+      },
+      "dateNaissance": {
+        "type": "string",
+        "format": "date:long",
+        "required": true,
+        "_collectHint": "Demander au format JJ/MM/AAAA, convertir en date longue (ex: 15 mars 1985)."
+      },
+      "lieuNaissance": {
+        "type": "string",
+        "required": true,
+        "_collectHint": "Ville et departement ou pays si ne en dehors de la France."
+      },
+      "adresse": {
+        "type": "string",
+        "required": true,
+        "_collectHint": "Adresse complete avec numero, rue, code postal et ville."
+      }
+    },
+    "logement": {
+      "_collectOrder": 2,
+      "_collectHint": "Informations sur le logement ou l'hebergement a lieu.",
+      "typeLogement": {
+        "type": "string",
+        "required": true,
+        "_collectHint": "Appartement ou maison. Proposer les deux options."
+      },
+      "adresse": {
+        "type": "string",
+        "required": true,
+        "_collectHint": "Par defaut, identique a l'adresse de l'hebergeant. Demander confirmation : le logement est-il a la meme adresse que celle indiquee precedemment ?"
+      }
+    },
+    "heberges": {
+      "_type": "array",
+      "_minItems": 1,
+      "_collectOrder": 3,
+      "_collectHint": "Demander d'abord combien de personnes sont hebergees, puis collecter nom, prenom, date et lieu de naissance pour chacune. Regrouper les questions par personne.",
+      "items": {
+        "nom": {
+          "type": "string",
+          "required": true
+        },
+        "prenom": {
+          "type": "string",
+          "required": true
+        },
+        "dateNaissance": {
+          "type": "string",
+          "format": "date:long",
+          "required": true
+        },
+        "lieuNaissance": {
+          "type": "string",
+          "required": true
+        },
+        "lienAvecHebergeant": {
+          "type": "string",
+          "required": false,
+          "_collectHint": "Lien de parente avec l'hebergeant (fils, fille, ami, conjoint, etc.). Ne collecter que si la condition lienParente est activee."
+        }
+      }
+    },
+    "attestation": {
+      "_collectOrder": 5,
+      "_collectHint": "Ne rien demander. Ces champs sont calcules automatiquement.",
+      "dateAttestation": {
+        "type": "string",
+        "format": "date:long",
+        "required": true,
+        "_collectHint": "Ne pas demander. Utiliser la date du jour."
+      },
+      "lieuAttestation": {
+        "type": "string",
+        "required": true,
+        "_collectHint": "Ne pas demander. Extraire la ville de l'adresse de l'hebergeant."
+      }
+    },
+    "conditions": {
+      "_collectOrder": 4,
+      "_collectHint": "Pour la condition lienParente, demander a l'utilisateur s'il souhaite preciser le lien de parente avec chaque heberge.",
+      "lienParente": {
+        "type": "boolean",
+        "default": false,
+        "description": "Preciser le lien de parente entre l'hebergeant et chaque heberge"
+      }
+    }
+  }
+}

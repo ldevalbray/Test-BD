@@ -1,0 +1,15 @@
+{
+  "template": "drive://templates/attestation-hebergement-template.docx",
+  "loops": [
+    {
+      "name": "heberges",
+      "description": "Duplique le bloc pour chaque personne hebergee"
+    }
+  ],
+  "conditions": [
+    {
+      "name": "lienParente",
+      "rule": "L'utilisateur decide. Demander s'il souhaite preciser le lien de parente (fils, fille, conjoint, ami, etc.) entre lui et chaque personne hebergee. Si oui, le champ lienAvecHebergeant de chaque heberge sera affiche dans le document. Par defaut : non."
+    }
+  ]
+}
